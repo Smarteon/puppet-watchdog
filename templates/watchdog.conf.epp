@@ -1,5 +1,8 @@
-<%- | Integer $period, Integer $tickle, Array[String] $interfaces = [], Array[String] $pings = [] | -%>
+<%- | Boolean $keep_alive = true, Integer $period, Integer $tickle,
+  Array[String] $interfaces = [], Array[String] $pings = [] | -%>
+<% if $keep_alive { -%>
 watchdog-device		= /dev/watchdog
+<% } -%>
 watchdog-timeout	= <%= $period %>
 interval		= <%= $tickle %>
 realtime		= yes
